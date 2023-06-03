@@ -1,0 +1,161 @@
+#player {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16/9;
+}
+
+.plyr--full-ui.plyr--hide-controls button.plyr__controls__item.plyr__control.plyr_back_btn,
+.plyr--full-ui.plyr--hide-controls button.plyr__controls__item.plyr__control.plyr_list_btn {
+    transition: all .6s ease;
+    opacity: 0;
+}
+
+.plyr--full-ui button.plyr__controls__item.plyr__control.plyr_back_btn {
+    transition: all .6s ease;
+    z-index: 2;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.plyr--full-ui button.plyr__controls__item.plyr__control.plyr_list_btn {
+    z-index: 2;
+    position: absolute;
+    right: 16px;
+    top: 22px;
+}
+
+
+.plyr--full-ui button.plyr__controls__item.plyr__control .plyr-back-title {
+    margin-left: 6px;
+}
+
+@media screen and (max-width: 950px) {
+    .plyr--full-ui button.plyr__controls__item.plyr__control.plyr_back_btn {
+        left: 2px;
+        top: 10px;
+    }
+
+    .plyr--full-ui button.plyr__controls__item.plyr__control.plyr_list_btn {
+        right: 6px;
+        top: 12px;
+    }
+
+
+    .plyr--full-ui button.plyr__controls__item.plyr__control .plyr-back-title {
+        margin-left: 2px;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+
+    .plyr--full-ui .plyr__controls a,
+    .plyr--full-ui .plyr__controls .plyr__volume {
+        display: none;
+    }
+}
+
+
+.plyr--full-ui .plyr-list {
+    width: 0;
+    display: none;
+}
+
+.plyr--full-ui .plyr-list.active {
+    display: block;
+    width: 27%;
+    min-width: 265px;
+    max-width: 370px;
+    transition: all .2s ease;
+    position: absolute;
+    right: 0;
+    background: rgba(33, 33, 33, .9);
+    z-index: 3;
+    height: 100%;
+}
+
+.plyr--full-ui .plyr-sidebar {
+    padding: 20px;
+    white-space: nowrap;
+
+}
+
+.plyr--full-ui .plyr-sidebar-header {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.plyr--full-ui .plyr-sidebar-title {
+    font-size: 1.2em;
+}
+
+.plyr--full-ui .plyr-sidebar-icon {
+    position: relative;
+    top: 5px;
+}
+
+.plyr--full-ui .plyr-sidebar-icon:hover {
+    color: #00a1d6;
+}
+
+.plyr--full-ui ul.plyr-sidebar-list {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+
+}
+
+.plyr--full-ui ul.plyr-sidebar-list::-webkit-scrollbar {
+    background-color: rgb(228 221 221 / 7%);
+    width: 4px;
+    height: 4px;
+}
+
+.plyr--full-ui ul.plyr-sidebar-list::-webkit-scrollbar-button {
+    display: none;
+}
+
+.plyr--full-ui ul.plyr-sidebar-list::-webkit-scrollbar-thumb {
+    background-color: rgb(195 178 178 / 30%);
+    border-radius: 6px;
+    -webkit-transition: background 200ms ease;
+    -moz-transition: background 200ms ease;
+    transition: background 200ms ease;
+}
+
+.plyr--full-ui .plyr-list li {
+    color: white;
+}
+
+.plyr--full-ui .plyr-list li .list-item {
+    border-color: white;
+    background-color: white;
+    padding: 4px 24px 4px 24px;
+    text-align: center;
+    transition: none;
+    cursor: pointer;
+    opacity: 1;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    color: black;
+    border-radius: 2px;
+}
+
+.plyr--full-ui .plyr-list li .list-item.active {
+    border-color: #00b2ff;
+    background-color: #00b2ff;
+    color: white;
+}
+
+
+.plyr--full-ui a.plyr__controls__item.plyr__control {
+    display: none;
+}
