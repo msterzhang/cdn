@@ -93,10 +93,8 @@ function activeItem() {
 }
 
 
-
 function addNumber() {
     let numberList = document.querySelectorAll(".like-number");
-
 }
 
 initSearch();
