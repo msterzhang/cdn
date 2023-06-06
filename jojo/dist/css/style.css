@@ -406,6 +406,21 @@ span.ui-input.ui-input-search {
     background-color: #cd0000;
 }
 
+.slide-data {
+    color: white;
+    max-width: 450px;
+    padding-left: 20px;
+    position: absolute;
+    top: 50%;
+}
+
+.slide-data .slide-data-content {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
 .content-list {
     margin-top: 30px;
 }
@@ -737,6 +752,13 @@ ui-pagination {
 }
 
 @media screen and (max-width: 950px) {
+    .slide-data {
+        max-width: 500px;
+        padding-left: 10px;
+        position: absolute;
+        top: 40%;
+    }
+
     .content-lift {
         display: none;
     }
@@ -831,6 +853,13 @@ ui-pagination {
     .content-body img {
         width: 170px;
     }
+
+    .slide-data {
+        max-width: 500px;
+        padding-left: 10px;
+        position: absolute;
+        top: 30%;
+    }
 }
 
 @media screen and (max-width: 550px) {
@@ -850,6 +879,13 @@ ui-pagination {
 
     .content-body img {
         width: 125px;
+    }
+
+    .slide-data {
+        max-width: 500px;
+        padding-left: 10px;
+        position: absolute;
+        top: 20%;
     }
 }
 
