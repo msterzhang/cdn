@@ -414,6 +414,7 @@ span.ui-input.ui-input-search {
     top: 50%;
 }
 
+
 .slide-data .slide-data-content {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -757,6 +758,7 @@ ui-pagination {
         padding-left: 10px;
         position: absolute;
         top: 40%;
+        font-size: 0.8em;
     }
 
     .content-lift {
@@ -886,6 +888,7 @@ ui-pagination {
         padding-left: 10px;
         position: absolute;
         top: 20%;
+        font-size: 0.8em;
     }
 }
 
