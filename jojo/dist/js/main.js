@@ -1,6 +1,5 @@
 // jojo version 1.0
-// 1144620122@qq.com
-
+// 2172934425@qq.com
 
 function showLoading() {
     let eleDialog = new Dialog({
@@ -97,6 +96,66 @@ function addNumber() {
     let numberList = document.querySelectorAll(".like-number");
 }
 
+
+window.onscroll = function () {
+    scrollFunction()
+};
+
+
+function scrollFunction() {
+    if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+        document.querySelector(".jojo-tools").style.display = "block";
+    } else {
+        document.querySelector(".jojo-tools").style.display = "none";
+    }
+}
+
+function loadTheme() {
+    let theme = localStorage.getItem("theme");
+    if (theme == "dark") {
+        document.body.classList.add("dark");
+        document.querySelector(".jojo-tools .bx-sun").style.display = "block"
+        document.querySelector(".jojo-tools .bx-moon").style.display = "none"
+    } else {
+        document.body.classList.remove("dark");
+        document.querySelector(".jojo-tools .bx-sun").style.display = "none"
+        document.querySelector(".jojo-tools .bx-moon").style.display = "block"
+    }
+}
+
+function initJojoTools() {
+    let top = document.querySelector(".top-tool");
+    top.addEventListener('click', () => {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    })
+    let dark = document.querySelector(".dark-tool");
+    dark.addEventListener('click', () => {
+        if (document.body.classList.contains("dark")) {
+            document.querySelector(".jojo-tools .bx-sun").style.display = "none"
+            document.querySelector(".jojo-tools .bx-moon").style.display = "block"
+            document.body.classList.remove("dark");
+            localStorage.setItem("theme", "white");
+        } else {
+            document.querySelector(".jojo-tools .bx-sun").style.display = "block"
+            document.querySelector(".jojo-tools .bx-moon").style.display = "none"
+            document.body.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+        }
+    })
+}
+
+
+function initTitle() {
+    document.querySelector("h1.title").addEventListener('click', () => {
+        window.location = window.location.origin;
+    })
+}
+
+
+initTitle();
 initSearch();
 initSidebar();
 activeItem();
+loadTheme();
+initJojoTools();
