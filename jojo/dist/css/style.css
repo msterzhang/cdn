@@ -811,6 +811,10 @@ h3.slide-data-title {
     line-height: 25px;
 }
 
+.dark .footer {
+    background-color: rgb(30, 30, 30);
+    color: white;
+}
 
 @media screen and (max-width: 1200px) {
     .main .play-list {
