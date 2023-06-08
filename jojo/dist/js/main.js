@@ -40,7 +40,6 @@ function initSearch() {
 
 function Saerch() {
     this.dialog.remove();
-    console.log("搜索")
 }
 
 
@@ -92,11 +91,6 @@ function activeItem() {
 }
 
 
-function addNumber() {
-    let numberList = document.querySelectorAll(".like-number");
-}
-
-
 window.onscroll = function () {
     scrollFunction()
 };
@@ -126,8 +120,11 @@ function loadTheme() {
 function initJojoTools() {
     let top = document.querySelector(".top-tool");
     top.addEventListener('click', () => {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+        window.scrollTo({
+            left: 0,
+            top: 0,
+            behavior: 'smooth'
+        })
     })
     let dark = document.querySelector(".dark-tool");
     dark.addEventListener('click', () => {
