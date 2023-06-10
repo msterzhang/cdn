@@ -149,6 +149,12 @@ function initTitle() {
 }
 
 
+function initTab() {
+    if (window.navigator.userAgent.toLowerCase().indexOf("quark") > -1) {
+        document.querySelector(".tabs-plyr-tab").style.display = "block";
+    }
+}
+initTab();
 initTitle();
 initSearch();
 initSidebar();

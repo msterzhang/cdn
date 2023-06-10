@@ -705,7 +705,8 @@ img {
     top: 4px;
 }
 
-.jojo-like-list {
+.jojo-like-list,
+.tabs-plyr-list {
     display: grid;
     justify-content: space-between;
     grid-gap: 10px;
@@ -713,13 +714,19 @@ img {
     grid-template-columns: repeat(auto-fill, 360px);
 }
 
-.jojo-plyr-list .list-item.active {
+.jojo-plyr-list .list-item.active,
+.tabs-plyr-list .list-item.active {
     border-color: #00b2ff;
     background-color: #00b2ff;
     color: white;
 }
 
-.plyr-sidebar-list.jojo-plyr-list {
+.tabs-plyr-tab {
+    display: none;
+}
+
+.plyr-sidebar-list.jojo-plyr-list,
+.tabs-plyr-list {
     display: grid;
     justify-content: space-between;
     grid-gap: 10px;
@@ -732,7 +739,12 @@ img {
     overflow-y: auto;
 }
 
-.jojo-plyr-list .list-item {
+.tabs-plyr-list {
+    margin-top: 20px;
+}
+
+.jojo-plyr-list .list-item,
+.tabs-plyr-list .list-item {
     border-color: white;
     background-color: white;
     padding: 8px 24px 8px 24px;

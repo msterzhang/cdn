@@ -159,3 +159,7 @@
 .plyr--full-ui a.plyr__controls__item.plyr__control {
     display: none;
 }
+
+.plyr--full-ui .plyr__progress input[type=range] {
+    top: 2px;
+}
