@@ -12,7 +12,6 @@ function showLoading() {
 function initSearch() {
     let searchBtn = document.getElementById("searchBtn");
     searchBtn.addEventListener('click', function () {
-
         new Dialog({
             title: '搜索',
             content: `<form id="editForm">
