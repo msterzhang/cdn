@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="apple-touch-icon"
+    href="https://img.alicdn.com/imgextra/i2/O1CN01DOYcs71v3B6bOemVM_!!6000000006116-2-tps-512-512.png" />
+  <link rel="icon" href="https://img.alicdn.com/imgextra/i1/O1CN01JDQCi21Dc8EfbRwvF_!!6000000000236-73-tps-64-64.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{.title}}</title>
+  <script src="{{getCdn}}/plugins/wasm/wasm_exec.js"></script>
+  <script type="module" crossorigin src="/assets/index-1f202d27.js"></script>
+  <link rel="stylesheet" href="/assets/index-81a0b9bc.css">
+</head>
+
+<body>
+  <div id="app" class="dark:bg-gray-800"></div>
+
+  <script>
+    const go = new Go();
+    const cdnUrl = "{{.cdn}}";
+    WebAssembly.instantiateStreaming(fetch(cdnUrl + '/plugins/wasm/main.wasm'), go.importObject).then((result) => {
+      go.run(result.instance);
+    });
+  </script>
+</body>
+
+</html>
