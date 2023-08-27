@@ -28,7 +28,8 @@ function initSearch() {
                 this.querySelector('form').addEventListener('submit', event => {
                     event.preventDefault();
                     let eleOutput = document.querySelector(".search-input");
-                    let pageUrl = window.location.origin + "/video/search?q=" + eleOutput.value;
+                    let pid = getPid();
+                    let pageUrl = `${window.location.origin}/video/search?q=${eleOutput.value}&pid=${pid}`;
                     window.location = pageUrl;
                     this.remove();
                 });
@@ -161,3 +162,6 @@ initSidebar();
 activeItem();
 loadTheme();
 initJojoTools();
+
+
+
