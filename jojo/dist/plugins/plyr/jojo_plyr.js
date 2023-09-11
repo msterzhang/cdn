@@ -15,6 +15,8 @@ class JojoPlyr {
         this.SpeedOk = config.SpeedOk;
         this.fullscreen = false;
         this.plyr = document.querySelector(plyrId);
+        this.touchStartX = 0
+        this.touchSpeedX = 0
         this.initPlyr();
     }
 
@@ -130,9 +132,11 @@ class JojoPlyr {
             let urlText = urlList[this.itemSpeed].split("$");
             if (urlText.length == 2) {
                 this.setSpeed();
-                return urlText[1] + "?pid=" + getPid();
+                let url = urlText[1] + "?pid=" + getPid();
+                return url;
             } else {
-                return urlList[this.itemSpeed] + "?pid=" + getPid();
+                let url = urlList[this.itemSpeed] + "?pid=" + getPid();
+                return url;
             }
         }
         return ""
@@ -319,6 +323,46 @@ class JojoPlyr {
         this.setTitle();
     }
 
+    formatTime(duration) {
+        // 计算小时、分钟和秒数
+        const hours = Math.floor(duration / 3600);
+        const minutes = Math.floor((duration % 3600) / 60);
+        const seconds = Math.floor(duration % 60);
+        // 格式化为两位数的字符串
+        const formattedHours = hours.toString().padStart(2, '0');
+        const formattedMinutes = minutes.toString().padStart(2, '0');
+        const formattedSeconds = seconds.toString().padStart(2, '0');
+
+        let formattedTime = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+        if (hours <= 0) {
+            formattedTime = `${formattedMinutes}:${formattedSeconds}`;
+        }
+        return formattedTime;
+    }
+
+    updateCurrentTime(currentTime) {
+        let plyrUi = document.querySelector(".plyr--full-ui");
+        plyrUi.querySelector(".plyr__time").innerHTML = currentTime;
+    }
+
+    handleSwipe() {
+        const minSwipeDistance = 10;
+        const swipeDistanceData = this.touchSpeed - this.touchStartX;
+        const swipeDistance = Math.abs(swipeDistanceData);
+        if (swipeDistance >= minSwipeDistance) {
+            const playerWidth = this.plyr.offsetWidth;
+            const swipeRatio = swipeDistance / playerWidth;
+            const rewinding = swipeDistanceData > 0;
+            let speedTime = rewinding ? this.plyr.duration - this.plyr.currentTime : this.plyr.currentTime;
+            const playbackTimeOffset = 0.1 * Math.abs(swipeRatio * (speedTime));
+            this.plyr.currentTime += rewinding ? playbackTimeOffset : -playbackTimeOffset;
+            let currentTime = this.formatTime(this.plyr.currentTime)
+            this.updateCurrentTime(currentTime)
+        }
+    }
+
+
+
     // 初始化播放器
     initPlyr() {
         if (!this.SpeedOk) {
@@ -415,6 +459,21 @@ class JojoPlyr {
         player.on('exitfullscreen', () => {
             this.fullscreen = false;
             this.updatHeigth();
+        });
+        player.on('touchstart', (event) => {
+            this.touchStartX = event.touches[0].clientX;
+        });
+        player.on('mousedown', (event) => {
+            this.touchStartX = event.clientX;
+        });
+        player.on('touchmove', (e) => {
+            let ev = e || window.event;
+            let touch = ev.targetTouches[0];
+            this.touchSpeed = touch.clientX;
+            if (this.touchSpeed < 0) {
+                this.touchSpeed = 0;
+            }
+            this.handleSwipe();
         });
     }
 }
