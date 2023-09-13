@@ -164,7 +164,7 @@ class JojoPlyr {
                     // console.log('加载Hls成功');
                 });
                 hls.on(Hls.Events.ERROR, () => {
-                    console.log('加载Hls失败');
+                    // console.log('加载Hls失败');
                 });
             }
         }
