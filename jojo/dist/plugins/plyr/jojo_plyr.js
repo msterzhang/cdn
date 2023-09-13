@@ -152,7 +152,7 @@ class JojoPlyr {
                             var pidParam = 'pid=' + getPid();
                             url = url + (url.indexOf('?') === -1 ? '?' : '&') + pidParam;
                         }
-                        xhr.open(xhr.method, url, true);
+                        xhr.open("get", url, true);
                     },
                     manifestLoadingMaxRetry: 3,
                     manifestLoadingTimeOut: 30000
