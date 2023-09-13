@@ -144,15 +144,15 @@ class JojoPlyr {
 
     // 检测是否为m3u8文件
     chunkM3u8() {
-        if (this.parserUrl().indexOf("m3u8") !== -1) {
+        if (this.parserUrl().indexOf(".m3u8") !== -1) {
             if (Hls.isSupported()) {
                 var hlsConfig = {
                     xhrSetup: function (xhr, url) {
-                        if (url.indexOf('m3u8') === -1 || url !== this.parserUrl()) {
+                        if (url.indexOf('.m3u8') === -1) {
                             var pidParam = 'pid=' + getPid();
                             url = url + (url.indexOf('?') === -1 ? '?' : '&') + pidParam;
                         }
-                        xhr.open(xhr.method, url);
+                        xhr.open(xhr.method, url, true);
                     },
                     manifestLoadingMaxRetry: 3,
                     manifestLoadingTimeOut: 30000
