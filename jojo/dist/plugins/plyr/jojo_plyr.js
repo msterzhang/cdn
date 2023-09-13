@@ -146,14 +146,22 @@ class JojoPlyr {
     chunkM3u8() {
         if (this.parserUrl().indexOf("m3u8") !== -1) {
             if (Hls.isSupported()) {
-                const hls = new Hls();
+                var hlsConfig = {
+                    xhrSetup: function (xhr, url) {
+                        var pidParam = 'pid=' + getPid();
+                        xhr.open(xhr.method, url + (url.indexOf('?') === -1 ? '?' : '&') + pidParam);
+                    },
+                    manifestLoadingMaxRetry: 3,
+                    manifestLoadingTimeOut: 30000
+                };
+                var hls = new Hls(hlsConfig);
                 hls.loadSource(this.parserUrl());
                 hls.attachMedia(this.plyr);
                 hls.on(Hls.Events.MANIFEST_PARSED, () => {
                     // console.log('加载Hls成功');
                 });
                 hls.on(Hls.Events.ERROR, () => {
-                    // console.log('加载Hls失败');
+                    console.log('加载Hls失败');
                 });
             }
         }
