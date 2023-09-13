@@ -148,7 +148,7 @@ class JojoPlyr {
             if (Hls.isSupported()) {
                 var hlsConfig = {
                     xhrSetup: function (xhr, url) {
-                        if (url.indexOf('.m3u8') === -1) {
+                        if (url.indexOf('.m3u8') === -1 && url.indexOf('pid=') === -1) {
                             var pidParam = 'pid=' + getPid();
                             url = url + (url.indexOf('?') === -1 ? '?' : '&') + pidParam;
                         }
