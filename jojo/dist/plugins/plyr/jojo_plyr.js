@@ -148,8 +148,10 @@ class JojoPlyr {
             if (Hls.isSupported()) {
                 var hlsConfig = {
                     xhrSetup: function (xhr, url) {
-                        var pidParam = 'pid=' + getPid();
-                        xhr.open(xhr.method, url + (url.indexOf('?') === -1 ? '?' : '&') + pidParam);
+                        if (url.indexOf('m3u8') === -1 || url != this.parserUrl()) {
+                            var pidParam = 'pid=' + getPid();
+                            xhr.open(xhr.method, url + (url.indexOf('?') === -1 ? '?' : '&') + pidParam);
+                        }
                     },
                     manifestLoadingMaxRetry: 3,
                     manifestLoadingTimeOut: 30000
