@@ -17,7 +17,6 @@ class JojoPlyr {
         this.plyr = document.querySelector(plyrId);
         this.touchStartX = 0
         this.touchSpeedX = 0
-        this.initPlyr();
     }
 
     // 更新选集面板宽度
@@ -488,3 +487,6 @@ class JojoPlyr {
         });
     }
 }
+
+
+

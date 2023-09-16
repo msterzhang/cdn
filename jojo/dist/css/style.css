@@ -1008,3 +1008,7 @@ h3.slide-data-title {
         width: 100px;
     }
 }
+
+.dark .ui-dialog-wrap {
+    color: white;
+}
