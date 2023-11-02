@@ -131,10 +131,10 @@ class JojoPlyr {
             let urlText = urlList[this.itemSpeed].split("$");
             if (urlText.length == 2) {
                 this.setSpeed();
-                let url = urlText[1] + "?pid=" + getPid();
+                let url = urlText[1] + (urlText[1].indexOf('?') === -1 ? '?' : '&') + "pid=" + getPid();
                 return url;
             } else {
-                let url = urlList[this.itemSpeed] + "?pid=" + getPid();
+                let url = (urlList[this.itemSpeed] + urlList[this.itemSpeed].indexOf('?') === -1 ? '?' : '&') + "pid=" + getPid();
                 return url;
             }
         }
@@ -148,8 +148,10 @@ class JojoPlyr {
                 var hlsConfig = {
                     xhrSetup: function (xhr, url) {
                         if (url.indexOf('.m3u8') === -1 && url.indexOf('pid=') === -1) {
-                            var pidParam = 'pid=' + getPid();
-                            url = url + (url.indexOf('?') === -1 ? '?' : '&') + pidParam;
+                            if (url.indexOf("aliyun") === -1) {
+                                var pidParam = 'pid=' + gxtPid(ck);
+                                url = url + (url.indexOf('?') === -1 ? '?' : '&') + pidParam;
+                            }
                         }
                         xhr.open("get", url, true);
                     },
