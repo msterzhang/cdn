@@ -10,7 +10,6 @@ class JojoPlyr {
         this.poster = config.poster;
         this.title = config.title;
         this.urls = getData(config.urls);
-        console.log(this.urls)
         this.itemSpeed = config.itemSpeed;
         this.errNum = config.errNum;
         this.urlType = config.urlType;
@@ -134,12 +133,14 @@ class JojoPlyr {
             let urlText = urlList[this.itemSpeed].split("$");
             if (urlText.length == 2) {
                 this.setSpeed();
-                let url = urlText[1] + urlText[1].indexOf('?') === -1 ? '?' : '&' + "pid=" + getPid();
+                let url = urlText[1] + (urlText[1].indexOf('?') === -1 ? '?' : '&') + "pid=" + getPid();
                 return url;
             } else {
-                let url = urlList[this.itemSpeed] + urlList[this.itemSpeed].indexOf('?') === -1 ? '?' : '&' + "pid=" + getPid();
+                let url = urlList[this.itemSpeed] + (urlList[this.itemSpeed].indexOf('?') === -1 ? '?' : '&') + "pid=" + getPid();
                 return url;
             }
+        } else {
+            console.log("进度错误")
         }
     }
 
@@ -175,6 +176,7 @@ class JojoPlyr {
 
     // 初始化
     plyrLoad() {
+        // console.log(this.parserUrl())
         this.plyr.src = this.parserUrl();
         this.plyr.load();
         this.plyr.currentTime = this.getCurrentTime();

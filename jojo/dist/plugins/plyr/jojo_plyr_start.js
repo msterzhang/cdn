@@ -134,11 +134,12 @@ class JojoPlyr {
                 let url = urlText[1] + (urlText[1].indexOf('?') === -1 ? '?' : '&') + "pid=" + getPid();
                 return url;
             } else {
-                let url = (urlList[this.itemSpeed] + urlList[this.itemSpeed].indexOf('?') === -1 ? '?' : '&') + "pid=" + getPid();
+                let url = urlList[this.itemSpeed] + (urlList[this.itemSpeed].indexOf('?') === -1 ? '?' : '&') + "pid=" + getPid();
                 return url;
             }
+        } else {
+            console.log("进度错误")
         }
-        return ""
     }
 
     // 检测是否为m3u8文件
