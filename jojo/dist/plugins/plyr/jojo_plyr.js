@@ -152,7 +152,7 @@ class JojoPlyr {
                     xhrSetup: function (xhr, url) {
                         if (url.indexOf('.m3u8') === -1 && url.indexOf('pid=') === -1) {
                             if (url.indexOf("aliyun") === -1) {
-                                var pidParam = 'pid=' + gxtPid(ck);
+                                var pidParam = 'pid=' + getPid();
                                 url = url + (url.indexOf('?') === -1 ? '?' : '&') + pidParam;
                             }
                         }
